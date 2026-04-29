@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { AuthProvider } from "./providers";
+import { UserButton } from "@neondatabase/auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+      <body suppressHydrationWarning={true} className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <AuthProvider>
 
        <header className="border-b border=var(--border) bg-[var(--surface)]/90 backdrop-blur-sm]">
@@ -40,6 +41,7 @@ export default function RootLayout({
             <Link href={"/dashboard"}>
             Dashboard
             </Link>
+            <UserButton size={"icon"}/>
           </nav>
         </div>
        </header>
